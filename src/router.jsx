@@ -1,6 +1,6 @@
-import { createBrowserRouter } from "react-router-dom";
-import App from './App.jsx'
-import { HomePage, RegisterPage, CategoryPage, DashPage} from './pages'
+import React from "react";
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import { HomePage, RegisterPage, CategoryPage, DashPage, ContentLayout} from './pages'
 
 // import { CN } from './pages'
 
@@ -17,14 +17,23 @@ export function createRouter(){
     return  createBrowserRouter([
         {
           path: RouteNames.HOME,
-          element: <HomePage />
+          children: [
+            { 
+              index: true, 
+              element: React.createElement(Navigate, { to: RouteNames.LOGIN, replace: true})  
+            }, 
+            {
+              path: RouteNames.LOGIN, 
+              element: <HomePage />
+            } 
+          ]
         },
         {
           path: RouteNames.REGISTER, 
           element: <RegisterPage />
         },
         {
-          element: <App/>, 
+          element: <ContentLayout/>, 
           children: [
             { index: true, path: RouteNames.CATEGORIES, element: <CategoryPage /> },   
             { path: RouteNames.DASHBOARD, element: <DashPage /> }   
