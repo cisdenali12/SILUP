@@ -1,25 +1,29 @@
 import { createBrowserRouter } from "react-router-dom";
-import Pages from './pages'
+import App from './App.jsx'
+import { HomePage, RegisterPage, CategoryPage, DashPage} from './pages'
 
 // import { CN } from './pages'
 
-// export const RouteNames = { 
-//     LOGIN:"login",
-//     REGISTER:"register",
-//     CATEGORIES:"categories",
-// }
+export const RouteNames = { 
+    HOME:"/",
+    LOGIN:"login",
+    REGISTER:"register",
+    CATEGORIES:"categories",
+    DASHBOARD:"dashboard",
+}
 
-export function createNavigation(){console.log(Pages.HomePage)}
-// export function createNavigation(LayouteElement, ){
-//     return  createBrowserRouter([
-//         {
-//           path: "/",
-//           element: <LayouteElement />,        //  layout
-//           children: [
-//             { index: true,     element: <HomePage /> },   
-//             { path: "register", element: <RegisterPage /> },   
-//             { path: "categories", element: <CategoryPage /> }   
-//           ],
-//         },
-//       ]);
-// }
+
+export function createRouter(){
+    return  createBrowserRouter([
+        {
+          path: RouteNames.HOME,
+          element: <App />,        //  layout
+          children: [
+            { index: true,     element: <HomePage /> },   
+            { path: RouteNames.REGISTER, element: <RegisterPage /> },   
+            { path: RouteNames.CATEGORIES, element: <CategoryPage /> },   
+            { path: RouteNames.DASHBOARD, element: <DashPage /> }   
+          ],
+        },
+      ]);
+}
