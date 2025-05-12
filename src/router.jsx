@@ -17,11 +17,16 @@ export function createRouter(){
     return  createBrowserRouter([
         {
           path: RouteNames.HOME,
-          element: <App />,        //  layout
+          element: <HomePage />
+        },
+        {
+          path: RouteNames.REGISTER, 
+          element: <RegisterPage />
+        },
+        {
+          element: <App/>, 
           children: [
-            { index: true,     element: <HomePage /> },   
-            { path: RouteNames.REGISTER, element: <RegisterPage /> },   
-            { path: RouteNames.CATEGORIES, element: <CategoryPage /> },   
+            { index: true, path: RouteNames.CATEGORIES, element: <CategoryPage /> },   
             { path: RouteNames.DASHBOARD, element: <DashPage /> }   
           ],
         },

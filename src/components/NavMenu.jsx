@@ -6,6 +6,7 @@ import "./NavMenu.css";
 export function NavMenu ({className}){
     return (
 <nav className={`menu ${className}`}>
+    <br/>
     <Link to={RouteNames.HOME}>Inicia Sesion</Link>
     <br />
     <Link to={RouteNames.REGISTER}>Registrate</Link> 
