@@ -1,10 +1,31 @@
-
-
-
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
   text-align: center;
+  align-self: flex-start;
 }
 
+.layout {
+ min-height: 100vh;
+ display:grid;
+ grid-template-columns: 1fr 1fr 1fr 1fr;
+ grid-template-rows: [header] 50px [content] 1fr [footer] 50px;
+}
+
+.header{
+  background-color: darkseagreen;
+  grid-row: header / header;
+  grid-column: 1 / span 4;  
+}
+
+main{
+  background-color: aqua;
+  grid-column:  1 / span 4 ;
+  grid-row:  second-line / 4 ;
+}
+
+.footer{
+background-color: darkorange;
+grid-column: 1 /span 4;
+grid-row: 4;
+
+}
