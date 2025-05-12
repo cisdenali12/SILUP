@@ -8,11 +8,11 @@ import { Outlet, Link } from "react-router-dom";
 function App() {
   return (
     <div className='layout'>
-      <NavMenu className= 'header' />
+      {/* <NavMenu className= 'header'/> */}
       <main>
         <Outlet />
       </main>
-      <footer className='footer'>Universidad de Guadalajara</footer>
+      {/* <footer className='footer'>Universidad de Guadalajara</footer> */}
     </div>
   );
 }
