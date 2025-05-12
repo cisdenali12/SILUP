@@ -1,7 +1,8 @@
 import { CategoryPage } from "./CategoryPage"
-import { HomePage } from "./subcarpeta/HomePage"
+import { HomePage } from "./HomePage"
 import { RegisterPage } from "./RegisterPage"
+import { DashPage } from "./DashPage"
 
 
 
-export default { CategoryPage, RegisterPage, HomePage }
+export { CategoryPage, RegisterPage, HomePage, DashPage }
