@@ -1,3 +1,4 @@
+
 #root {
   width: 100%;
   text-align: center;
@@ -11,7 +12,7 @@
  grid-template-rows: [header] 50px [content] 1fr [footer] 50px;
 }
 
-.header{
+.Header{
   background-color: darkseagreen;
   grid-row: header;
   grid-column: 1 / span 4;  
@@ -22,9 +23,9 @@ main{
   grid-row:  content / footer ;
 }
 
-.footer{
+.Footer{
 background-color: darkorange;
 grid-column: 1 /span 4;
 grid-row: footer;
 
-}
+} 
