@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter, Navigate } from "react-router-dom";
+import { createBrowserRouter, Navigate, replace } from "react-router-dom";
 import { HomePage, RegisterPage, CategoryPage, DashPage, ContentLayout} from './pages'
 
 // import { CN } from './pages'
@@ -25,7 +25,7 @@ export function createRouter(){
             {
               path: RouteNames.LOGIN, 
               element: <HomePage />
-            } 
+            }, 
           ]
         },
         {
@@ -38,6 +38,10 @@ export function createRouter(){
             { index: true, path: RouteNames.CATEGORIES, element: <CategoryPage /> },   
             { path: RouteNames.DASHBOARD, element: <DashPage /> }   
           ],
+        },
+        {
+          path: '*', 
+          element: <RegisterPage />
         },
       ]);
 }
