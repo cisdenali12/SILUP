@@ -2,8 +2,6 @@ import React from "react";
 import { createBrowserRouter, Navigate, replace } from "react-router-dom";
 import { HomePage, RegisterPage, CategoryPage, DashPage, ContentLayout} from './pages'
 
-// import { CN } from './pages'
-
 export const RouteNames = { 
     HOME:"/",
     LOGIN:"login",
