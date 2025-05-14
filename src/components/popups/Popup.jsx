@@ -1,4 +1,3 @@
-import { useState } from "react"
 import "./Popup.css"
 
 /**
@@ -7,7 +6,8 @@ import "./Popup.css"
  * @children NONE (the children are provided by the parent template)
  * @returns 
  */
-export function Popup({ show, children }){
+export function Popup({ show = true, children }){
+
     return (
         <div className={`popup-bg ${show ? 'popup-show':'popup-hide'}`}>
             {children}

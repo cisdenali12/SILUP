@@ -8,14 +8,17 @@
     width: 100%;
     height: 100;
     background-color: rgba(0,0,0,.7);
-    transition: opacity 1s linear;
+    transition: opacity .5s linear;
     color: white;
+    opacity:0;
 }
 
 .popup-show{
-opacity: 1;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .popup-hide{
-opacity: 0;
+    opacity: 0;
+    pointer-events: none;
 }
