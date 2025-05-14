@@ -1,6 +1,9 @@
 import React from "react";
-import { createBrowserRouter, Navigate, replace } from "react-router-dom";
-import { HomePage, RegisterPage, CategoryPage, DashPage, ContentLayout} from './pages'
+import { createBrowserRouter, Navigate } from "react-router-dom";
+import { HomePage, RegisterPage, ContentLayout} from './pages'
+import { CategoryCont } from "./components/CategoryCont";
+import { Items } from "./components/Items";
+
 
 export const RouteNames = { 
     HOME:"/",
@@ -33,8 +36,8 @@ export function createRouter(){
         {
           element: <ContentLayout/>, 
           children: [
-            { index: true, path: RouteNames.CATEGORIES, element: <CategoryPage /> },   
-            { path: RouteNames.DASHBOARD, element: <DashPage /> }   
+            { index: true, path: RouteNames.CATEGORIES, element: <CategoryCont /> },   
+            { path: RouteNames.DASHBOARD, element: <Items /> }   
           ],
         },
         {
