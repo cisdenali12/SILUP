@@ -6,26 +6,22 @@
 }
 
 .layout {
- min-height: 100vh;
- display:grid;
- grid-template-columns: 1fr 1fr 1fr 1fr;
- grid-template-rows: [header] 50px [content] 1fr [footer] 50px;
+  min-height: 100vh;
+  display:grid;
+  grid-template-columns: 1fr ;
+  grid-template-rows: [header] 50px [content] 1fr [footer] 50px;
 }
 
 .Header{
   background-color: darkseagreen;
   grid-row: header;
-  grid-column: 1 / span 4;  
 }
 
 main{
   grid-column:  1 / span 4 ;
-  grid-row:  content / footer ;
 }
 
 .Footer{
-background-color: darkorange;
-grid-column: 1 /span 4;
-grid-row: footer;
-
+  background-color: darkorange;
+  grid-row: footer;
 } 

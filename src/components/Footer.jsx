@@ -4,6 +4,6 @@ export default function(){
 
     return (
 
-        <div className="Footer">Footer</div>
+        <div className="Footer">Universidad de Guadalajara</div>
     )
 }

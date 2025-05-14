@@ -10,7 +10,7 @@ export function ContentLayout() {
     <div className='layout'>
       
         <Header />
-    
+      
       <main>
         <Outlet />
       </main>

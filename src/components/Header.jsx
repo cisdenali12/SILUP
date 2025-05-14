@@ -8,7 +8,7 @@ import "./Header.css" ;
 
 export default function () {
 return (
-<div className="Header">Header</div>
+<div className="Header">SILUP</div>
 )
 }
 
