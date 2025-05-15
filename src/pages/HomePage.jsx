@@ -29,7 +29,7 @@ export function HomePage() {
   }, [isLoggedIn])
 
   return (
-  <div className="grid grod-cols-1 grid-rows-[auto 1fr] h-screen">
+  <div className="grid grid-rows-[70px_1fr] grid-cols-1 h-screen">
     <span className="text-red-900 row-1">Bienvenido a SILUP </span>
     <LoginForm className="row-2" onSubmit={ handleSubmit } />
     <MessagePopup  type='error' show={ showErrorPopup } onClose={ handleCloseError }/>

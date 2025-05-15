@@ -22,7 +22,7 @@ export default function ({type = 'warning', title, message, okLabel = 'Ok', show
 
     return (
         <Popup show={show}>
-            <div className={`grid grid-cols-1 grid-rows[3fr 2fr 1fr 2fr] justify-center  text-neutral-700 px-10 pb-10 w-9/10 min-h-6/10 bg-neutral-200 rounded-lg ${color}`}>
+            <div className={`grid grid-cols-1 grid-rows[3fr_2fr_1fr_2fr] justify-center  text-neutral-700 px-10 pb-10 w-9/10 min-h-6/10 bg-neutral-200 rounded-lg ${color}`}>
                     <ExclamationTriangleIcon className={`row-1 justify-self-center size-50 ${colorIcon}`}/>
                     <p className=' row-2 text-6xl font-bold'>{titleTxt}</p>
                     <p className='row-3 text-2xl'>{message}</p>
