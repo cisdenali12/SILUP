@@ -1,12 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { initialState as userInitialState, userSlice } from './user'
-
-const initialState = {
-    user:{...userInitialState}
-}
+import { userSlice } from './user/user'
+import { categoriesSlice } from './categories/categories'
 
 export default configureStore({
   reducer: {
-    [userSlice.name]: userSlice.reducer
+    [userSlice.name]: userSlice.reducer,
+    [categoriesSlice.name]: categoriesSlice.reducer
   }
 })

@@ -2,12 +2,16 @@ import { createSlice } from '@reduxjs/toolkit'
 import doLogin from './doLogin'
 import { useSelector } from 'react-redux'
 
-export const initialState = {
+const initialState = {
     email:'',
     id:'',
     loginError:false
 }
 
+/**
+ * Actions that can be dispatched
+ * Eg. dispatch( userActions.<action>({params}) )
+ */
 export const userActions = {
     received:({email, id})=>({type:'user/received', payload:{email, id}}),
     login:({email, password})=>doLogin({user:email, password}),
