@@ -1,22 +1,29 @@
-import { Link, Outlet } from "react-router-dom";
-
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 function App() {
   return (
-    <div>
+    <>
       <nav>
         <ul>
           <li>
             <Link to="/">Inicio</Link>
           </li>
           <li>
-            <Link to="/register">Registro</Link>
+            <Link to="/registro">Registro</Link>
+          </li>
+          <li>
+            <Link to="/login">Iniciar Sesión</Link>
           </li>
         </ul>
       </nav>
-      <hr />
-      <Outlet />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/registro" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </>
   );
 }
-
 export default App;

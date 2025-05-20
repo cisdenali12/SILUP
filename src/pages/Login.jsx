@@ -1,7 +1,6 @@
 import { useState } from "react";
-function Register() {
+function Login() {
   const [formData, setFormData] = useState({
-    nombre: "",
     correo: "",
     contraseña: "",
   });
@@ -14,28 +13,23 @@ function Register() {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    const usuariosPrevios = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const nuevosUsuarios = [...usuariosPrevios, formData];
-    localStorage.setItem("usuarios", JSON.stringify(nuevosUsuarios));
-    setFormData({
-      nombre: "",
-      correo: "",
-      contraseña: "",
-    });
-    alert("¡Usuario registrado con éxito!");
+    const usuariosGuardados =
+      JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuarioEncontrado = usuariosGuardados.find(
+      (usuario) =>
+        usuario.correo === formData.correo &&
+        usuario.contraseña === formData.contraseña
+    );
+    if (usuarioEncontrado) {
+      alert("Inicio de sesión exitoso");
+    } else {
+      alert("Correo o contraseña incorrectos");
+    }
   };
   return (
     <div>
-      <h1>Registro de Usuario</h1>
+      <h1>Iniciar Sesión</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="nombre"
-          placeholder="Nombre"
-          value={formData.nombre}
-          onChange={handleChange}
-          required
-        />
         <input
           type="email"
           name="correo"
@@ -52,9 +46,9 @@ function Register() {
           onChange={handleChange}
           required
         />
-        <button type="submit">Registrarse</button>
+        <button type="submit">Ingresar</button>
       </form>
     </div>
   );
 }
-export default Register;
+export default Login;
