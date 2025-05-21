@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 import { createRouter } from './router'
 import { StrictMode } from 'react'
+// import { StrictMode } from 'react'
 import  { store } from './store'
 import { Provider } from 'react-redux'
 
