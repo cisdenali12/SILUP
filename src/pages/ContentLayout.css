@@ -12,16 +12,10 @@
   grid-template-rows: [header] 50px [content] 1fr [footer] 50px;
 }
 
-.Header{
-  background-color: darkseagreen;
-  grid-row: header;
-}
-
 main{
   grid-column:  1 / span 4 ;
 }
 
 .Footer{
-  background-color: darkorange;
   grid-row: footer;
 } 

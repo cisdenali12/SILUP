@@ -1,35 +1,43 @@
 import React from "react";
-import "./RegisterForm.css" ;
 
 
-export function RegisterForm (){
+export function RegisterForm ({className, onSubmit = console.log}){
     
-    function handleClick(data){
-        console.log('Este es el boton del formulario registro');
+    function handleSubmit(data){
+        const submitData = {
+            name:data.get('name'),
+            email:data.get('email'),
+            password:data.get('pwd'),
+        }
+        console.log('REgister submit', submitData)
+        onSubmit(submitData)
     }
 
 return (
-    <div className="container-form">
-    <h2>Formulario de Registro </h2>
+    <div className={`${className} h-full`}>
+        <form action={handleSubmit} className="h-full grid grid-cols-1 text-black">
+            <span className="flex flex-col-reverse pl-2">
+                <label className="text-left flex-none" htmlFor="name">Nombre:</label>
+            </span>
+            <input className="rounded-md bg-blue-50 pl-1" type="text" id="name" name="name" placeholder="nombre"/>
+        
+            <span className="flex flex-col-reverse pl-2">
+                <label className="text-left flex-none" htmlFor="email">Correo electrónico:</label>
+            </span>
+            <input className="rounded-md bg-blue-50 pl-2" type="email" id="email" name="email" placeholder="correo"/>
+        
+            <span className="flex flex-col-reverse pl-2">
+                <label className="text-left flex-none" htmlFor="pwd">Contraseña:</label>
+            </span>
+            <input className="rounded-md bg-blue-50 pl-1" type="password" id="pwd" name="pwd" placeholder="constraseña"/>
+        
+            <span className="flex flex-col-reverse pl-2">
+                <label className="text-left flex-none" htmlFor="pwdRepeat">Repetir contraseña:</label>
+            </span>
+            <input className="rounded-md bg-blue-50 pl-2" type="password" id="pwdRepeat" name="pwdRepeat" placeholder="confirma contraseña"/>
 
-<form className="RegisterForm" action={handleClick}>
-    
-        <label htmlFor="name">Nombre:</label>
-        <input type="text" id="name" name="user_name" />
-      
-        <label htmlFor="mail">Correo electrónico:</label>
-        <input type="email" id="mail" name="user_mail" />
-      
-        <label htmlFor="pwd">Contraseña:</label>
-        <input type="password" id="pwd" name="pwd" />
-      
-        <label htmlFor="pwdRepeat">Repetir contraseña:</label>
-        <input type="password" id="pwdRepeat" name="pwd" />
-     
-
-        <button  type="submit" />
-    
-  </form>
+            <button className="bg-blue-400 text-white mt-5" type="submit">Registrar</button>
+        </form>
   </div>
 )
 
