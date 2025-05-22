@@ -1,0 +1,23 @@
+{
+  "name": "silup-api",
+  "version": "0.0.1",
+  "description": "Api para el proyecto SILUP",
+  "main": "index.js",
+  "author": "Mario Cisneros <cisdenali12@gmail.com>",
+  "license": "ISC",
+  "scripts": {
+    "dev": "nodemon ./index.js",
+    "start" : "node ./index.js"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.16.0",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
