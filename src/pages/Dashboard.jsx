@@ -1,17 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CategoryCard } from "../components/category/CategoryCard";
-import { useCategoriesSummary, useCategoriesList } from "../store";
+import { useCategoriesSummary, useCategoriesList, categoriesActions, useShowLoader } from "../store";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
 
 
 export function Dashboard (){
-        const { itemsCount, amountsByUnit:byUnitData } = useCategoriesSummary()
-        const categories = useCategoriesList()
-        const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const handleClickCategory = navigate
+    const { itemsCount, amountsByUnit:byUnitData } = useCategoriesSummary()
+    const categories = useCategoriesList()
+    const {show:showLoader, hide:hideLoader} = useShowLoader()
+    
+    // Fetching all the categories (once)
+    useEffect(()=>{
+        const effect = async ()=>{
+            showLoader  ()
+            const promises = []
+            categories.forEach(c=>{
+                    // Hydrating the categories when the component is mounted
+                    promises.push(dispatch(categoriesActions.getAmountsByUnit({category:c.name})))
+                    promises.push(dispatch(categoriesActions.getItems({category:c.name})))
+                })
+            await Promise.allSettled(promises)
+            hideLoader()
+        }
+        effect()
+    },[/*empty on purpose**/])
 
-        const handleClickCategory = navigate
-        console.log('categories',categories)
-        console.log('itemsCount',itemsCount, 'amountsByUnit', byUnitData)
+
     return  (  
         <div className="flex flex-col h-full justify-between text-neutral-600 text-left">
             <span className="text-2xl pl-2">

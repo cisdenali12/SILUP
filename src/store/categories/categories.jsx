@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import state from './state'
-import { consumeItemAmount, addItemAmount, createItem, deleteItem, getItems } from './ItemsCRUD'
+import { consumeItemAmount, addItemAmount, createItem, deleteItem, getItems, getAmountsByUnit } from './ItemsAPI'
 
 /**
  * {
- *  fridge:{ name:string, display:string, items:[{id:number, name:string, category:string, amount:number, unit:string }] },
+ *  fridge:{ name:string, display:string, amountsByUnit:[{unit:string, value:number}], items:[{id:number, name:string, category:string, amount:number, unit:string }] },
  *  groceries:{ ...same as above...},
  *  produce:{ ...same as above...},
  *  freezer:{ ...same as above...},
@@ -44,14 +44,14 @@ export const categoriesActions = {
     addItem:({ category, item })=>({ payload:{ category, item }, type: 'categories/addItem'}),
     /**
      * [REMOTE] 
-     * Tells the server to substract amount from an item
+     * The server removes from an item
      * @param {category, itemId, amount} 
      * @returns 
      */
     consumeItemAmount:({category, itemId, amount})=>consumeItemAmount({category, itemId, amount}),
     /**
      * [REMOTE] 
-     * Tells the server to add to the amount of an item
+     * The server adds to an item
      * @param {category, itemId, amount} 
      * @returns 
      */
@@ -76,13 +76,28 @@ export const categoriesActions = {
      * @param {category}
      * @returns 
      */
-    getItems:({category})=>getItems({category})
+    getItems:({category})=>getItems({category}),
+    /**
+     * [REMOTE]
+     * Tells the server to get the items list from a category
+     * @param {category}
+     * @returns 
+     */
+    getAmountsByUnit:({category})=>getAmountsByUnit({category})
 }
 
 export const categoriesSlice = createSlice({
     name:'categories',
     initialState,
     reducers:{
+        /**
+         * [LOCAL]
+         * @param {*} state 
+         * @param {*} action { payload:{category, amountsByUnit}, type: 'categories/setAmountsByUnit'}
+         */
+        setAmountsByUnit:(state, action)=>{
+            state[action.payload.category].amountsByUnit = action.payload.amountsByUnit
+        },
         /**
          * [LOCAL]
          * @param {*} state 
@@ -100,7 +115,7 @@ export const categoriesSlice = createSlice({
             const itemIndex = state[action.payload.category].items.findIndex(i=>i.id === action.payload.item.id)
 
             if(itemIndex >= 0){
-                state[action.payload.category].items.splice(itemIndex,1,action.payload.item)
+                state[action.payload.category].items[itemIndex] = action.payload.item
             } else {
                 state[action.payload.category].items.push(action.payload.item)
             }

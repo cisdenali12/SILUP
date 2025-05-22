@@ -23,24 +23,23 @@ export function HomePage() {
   }
 
   const handleRegister = ()=>{
-    navigate(RouteNames.REGISTER, {replace:true})
+    navigate(RouteNames.REGISTER, { replace:true })
   }
 
   useEffect(()=>{
     if(isLoggedIn){
-      console.log('Navigate forward!!')
-      navigate(RouteNames.DASHBOARD)
+      navigate(RouteNames.DASHBOARD, { replace:true })
     }
   }, [isLoggedIn])
 
   return (
-  <div className="grid grid-cols-1 h-screen p-5">
+  <div className="grid grid-cols-1 grid-rows-[auto_1fr_3fr_1fr] h-screen p-5">
     <span className="row-1 text-red-900 text-9xl font-black">SILUP </span>
     <span className="row-2 text-red-900 text-xl">Bienvenido! Ingresa a tu cuenta</span>
     <LoginForm className="row-3" onSubmit={ handleSubmit } />
-    <a className="row-4 grid grid-rows-1" href="">
-      <span className="row-2 underline text-sm hover:no-underline" onClick={handleRegister}>No tienes cuenta? Registrate aqui</span>
-    </a>
+    <div className="row-4 grid grid-rows-1">
+      <span className="row-2 underline text-sm hover:no-underline hover:cursor-pointer text-blue-700" onClick={handleRegister}>No tienes cuenta? Registrate aqui</span>
+    </div>
     <MessagePopup  type='error' show={ showErrorPopup } onClose={ handleCloseError }/>
   </div>
   )
