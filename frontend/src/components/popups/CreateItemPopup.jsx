@@ -70,8 +70,8 @@ export function CreateItemPopup({show, okLabel = 'Ok', cancelLabel='cancel', onC
                         <div className='flex flex-wrap shrink-0 pl-3'>
                         {
                             units.map(u=>(
-                                <div className='max-w-[25%] w-1/4 my-2 flex'>
-                                    <label key={`lbl_${u}`} className='font-bold hover:cursor-pointer'>
+                                <div key={u} className='max-w-[25%] w-1/4 my-2 flex'>
+                                    <label className='font-bold hover:cursor-pointer'>
                                         {u}
                                     <input 
                                         className="hover:cursor-pointer" 

@@ -50,6 +50,7 @@ export function Dashboard (){
                         itemsCount={c.items.length}
                         byUnitData={c.amountsByUnit}
                         onClick={()=>handleClickCategory(c.name)}
+                        category={c.name}
                         className="bg-red-100 h-[45%] w-[45%]"
                     />
                 ))}

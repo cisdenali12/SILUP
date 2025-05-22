@@ -23,20 +23,22 @@ export  function CategoryDetail (){
     }
 
     const onAcceptEdit = async ({value})=>{
+        setShowEdit(false)
+
         if(value == selectedItem.amount){
             console.log('skip no change')
             return
         }
         console.log('changing to', value)
+
         showLoader()
-        setShowEdit(false)
         let dif = value - selectedItem.amount
         if(dif >= 0){
             // Adding
-            await dispatch(categoriesActions.addItemAmount({category:selectedItem.category, itemId:selectedItem.id, amount: dif}))
+            await dispatch(categoriesActions.addItemAmount({category:   category, itemId:selectedItem.id, amount: dif}))
         } else {
             // Substracting
-            await dispatch(categoriesActions.consumeItemAmount({category:selectedItem.category, itemId:selectedItem.id, amount: Math.abs(dif)}))
+            await dispatch(categoriesActions.consumeItemAmount({category:   category, itemId:selectedItem.id, amount: Math.abs(dif)}))
         }
         hideLoader()
         console.log('hidden')

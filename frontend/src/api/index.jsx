@@ -3,6 +3,11 @@ import { store } from '../store'
 
 const axiosClient = axios.create({baseURL: 'http://localhost:3000'})
 
+
+const setAuthorization = token => {
+axiosClient.defaults.headers.common['Authorization'] = `Bearer ${token}`
+}
+
 export const client = {
     login:async({email, password})=>{
         try{
@@ -12,8 +17,12 @@ export const client = {
             console.log(response)
 
             if(response.status == 200){
+                const { user, token } = response.data
+
+                // set the authorization header for the client
+                setAuthorization(token)
                 // Login correcto
-                return { success:true, id:response.data.id, name: response.data.name, email:response.data.email }
+                return { success:true, id:user.id, name: user.name, email:user.email }
             } else {
                 // Login fallido
                 return { success:false, error:response.status } 
@@ -31,8 +40,11 @@ export const client = {
             console.log(response)
 
             if(response.status == 201){
+                const { user, token } = response.data
+                // set the authorization header for the client
+                setAuthorization(token)
                 // correcto
-                return { success:true, id:response.data.id, name: response.data.name, email:response.data.email }
+                return { success:true, id:user.id, name: user.name, email:user.email }
             } else {
                 // fallido
                 return { success:false, error:response.status } 
